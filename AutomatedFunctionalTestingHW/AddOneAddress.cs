@@ -21,12 +21,12 @@ namespace AutomatedFunctionalTestingHW
         [SetUp]
         public void startBrowser()
         {
-            driver = new FirefoxDriver("C:/Users/Angel/Desktop/AutomatedFunctionalTesting/automated-functional-testing-HW");
+            driver = new FirefoxDriver("C:/Users/jagutierrez/source/repos/automated-functional-testing-HW");
             //driver = new ChromeDriver("C:/Users/Angel/Desktop/AutomatedFunctionalTesting/automated-functional-testing-HW");
         }
 
         [Test]
-        public void LoginTest()
+        public void LoginTestAndBuy()
         {
             driver.Url = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
 
@@ -61,7 +61,6 @@ namespace AutomatedFunctionalTestingHW
             driver.FindElement(By.Id("address1")).SendKeys("Corregidora 48");
             driver.FindElement(By.Id("address2")).SendKeys("Brisa del mar 54");
             driver.FindElement(By.Id("city")).SendKeys("Morelia");
-            //driver.FindElement(By.XPath("//option[5]")).Click();
             driver.FindElement(By.Id("postcode")).SendKeys("58500");
             driver.FindElement(By.XPath("(//option[@value='21'])[2]")).Click();
             driver.FindElement(By.XPath("//option[@value='30']")).Click();

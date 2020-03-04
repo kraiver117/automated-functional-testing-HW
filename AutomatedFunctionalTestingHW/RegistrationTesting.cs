@@ -17,13 +17,13 @@ namespace AutomatedFunctionalTestingHW
         IWebDriver driver;
 
         
-        int seconds = 5000;
+        int seconds = 4000;
 
 
         [SetUp]
         public void startBrowser(){
             
-            driver = new FirefoxDriver("C:/Users/Angel/Desktop/AutomatedFunctionalTesting/automated-functional-testing-HW");
+            driver = new FirefoxDriver("C:/Users/jagutierrez/source/repos/automated-functional-testing-HW");
             //driver = new ChromeDriver("C:/Users/Angel/Desktop/AutomatedFunctionalTesting/automated-functional-testing-HW");
         }
 

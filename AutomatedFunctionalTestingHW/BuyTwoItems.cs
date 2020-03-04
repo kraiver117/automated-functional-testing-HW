@@ -14,13 +14,12 @@ namespace AutomatedFunctionalTestingHW
     class BuyTwoItems
     {
         IWebDriver driver;
-        int seconds = 5000;
-        int wait = 3000;
+        int seconds = 2500;
 
         [SetUp]
         public void StartBrowser()
         {
-            driver = new FirefoxDriver("C:/Users/Angel/Desktop/AutomatedFunctionalTesting/automated-functional-testing-HW");
+            driver = new FirefoxDriver("C:/Users/jagutierrez/source/repos/automated-functional-testing-HW");
         }
 
         [Test]
@@ -40,44 +39,51 @@ namespace AutomatedFunctionalTestingHW
                 .Build()
                 .Perform();
 
-            PurchaseTest();
+            Purchase();
 
         }
-        public void PurchaseTest()
+        public void Purchase()
         {
+            //Buying first Item
             Thread.Sleep(seconds);
-            Actions builder = new Actions(driver);
-            IWebElement shopBtn = driver.FindElement(By.XPath("//div[@id='block_top_menu']/ul/li/a"));
-            shopBtn.Click();
-
-
-            Thread.Sleep(seconds + 2);
-            driver.FindElement(By.XPath("//img[@alt='Printed Summer Dress']")).Click();
-            Thread.Sleep(wait);
-            driver.FindElement(By.XPath("//option[@value='2']")).Click();
-            Thread.Sleep(wait);
-            driver.FindElement(By.XPath("//a[@id='color_13']")).Click();
-            //life hack - selecting 2 items (quantity)
-            Thread.Sleep(wait);
-            driver.FindElement(By.XPath("//p[@id='quantity_wanted_p']/a[2]/span")).Click();
-            Thread.Sleep(wait);
+             driver.FindElement(By.XPath("//input[@id='search_query_top']")).SendKeys("Blouse");
+             driver.FindElement(By.XPath("//button[@name='submit_search']")).Click();
+            Thread.Sleep(seconds);
+            driver.FindElement(By.XPath("//div[@id='center_column']/ul/li/div/div/div/a/img")).Click();
+            driver.FindElement(By.XPath("//a[@id='color_8']")).Click();
+            driver.FindElement(By.XPath("//p[@id='quantity_wanted_p']/a[2]/span/i")).Click();
             driver.FindElement(By.XPath("//p[@id='add_to_cart']/button/span")).Click();
-            Thread.Sleep(wait);
+            Thread.Sleep(seconds);
+            driver.FindElement(By.XPath("//div[@id='layer_cart']/div/div[2]/div[4]/span/span")).Click();
+            
+            //Buying second Item
+            Thread.Sleep(seconds);
+            driver.FindElement(By.XPath("//input[@id='search_query_top']")).Clear();
+            driver.FindElement(By.XPath("//input[@id='search_query_top']")).SendKeys("Dress");
+            driver.FindElement(By.XPath("//button[@name='submit_search']")).Click();
+            Thread.Sleep(seconds);
+            driver.FindElement(By.XPath("//img[@alt='Printed Summer Dress']")).Click();
+            Thread.Sleep(seconds);
+            driver.FindElement(By.XPath("//a[@id='color_13']")).Click();
+            Thread.Sleep(seconds);
+            driver.FindElement(By.XPath("//p[@id='quantity_wanted_p']/a[2]/span/i")).Click();
+            Thread.Sleep(seconds);
+            driver.FindElement(By.XPath("//p[@id='add_to_cart']/button/span")).Click();
+            Thread.Sleep(seconds);
+
+            //Payment
             driver.FindElement(By.XPath("//div[@id='layer_cart']/div/div[2]/div[4]/a/span")).Click();
-            Thread.Sleep(wait);
-            driver.FindElement(By.XPath("//div[@id='center_column']/p[2]/a/span")).Click();
-            Thread.Sleep(wait);
+            driver.FindElement(By.XPath("//div[3]/div/p[2]/a/span")).Click();
+            Thread.Sleep(seconds);
             driver.FindElement(By.XPath("//div[@id='center_column']/form/p/button/span")).Click();
-            Thread.Sleep(wait);
-            driver.FindElement(By.XPath("//p[2]/div/span/input")).Click();
-            Thread.Sleep(wait);
+            Thread.Sleep(seconds);
+            driver.FindElement(By.XPath("//input[@id='cgv']")).Click();
+            Thread.Sleep(seconds);
             driver.FindElement(By.XPath("//form[@id='form']/p/button/span")).Click();
-            Thread.Sleep(wait);
-            driver.FindElement(By.XPath("//div[@id='HOOK_PAYMENT']/div[2]/div/p/a/span")).Click();
-            Thread.Sleep(wait);
+            Thread.Sleep(seconds);
+            driver.FindElement(By.XPath("//div[@id='HOOK_PAYMENT']/div[2]/div/p/a")).Click();
+            Thread.Sleep(seconds);
             driver.FindElement(By.XPath("//p[@id='cart_navigation']/button/span")).Click();
-
-
             Thread.Sleep(seconds);
         }
 
