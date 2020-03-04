@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using System.Threading;
 using OpenQA.Selenium.Interactions;
 
@@ -21,7 +22,9 @@ namespace AutomatedFunctionalTestingHW
 
         [SetUp]
         public void startBrowser(){
-            driver = new FirefoxDriver("C:/Users/jagutierrez/source/repos/AutomatedFunctionalTestingHW");
+            
+            driver = new FirefoxDriver("C:/Users/Angel/Desktop/AutomatedFunctionalTesting/automated-functional-testing-HW");
+            //driver = new ChromeDriver("C:/Users/Angel/Desktop/AutomatedFunctionalTesting/automated-functional-testing-HW");
         }
 
         [Test]
